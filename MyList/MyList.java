@@ -43,5 +43,6 @@ public static void main(String[] args) {
                                         System.out.println("Entrez la valeur dont vous rechercher l'index");
                                         int index = scanner.nextInt();
                                         System.out.println("Le nombre"+ index + " entrer se trouve a l'index" + Arrays.binarySearch(number,index));
+                              scanner.close();
                               }
 }
