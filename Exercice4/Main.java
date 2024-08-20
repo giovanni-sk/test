@@ -15,7 +15,7 @@
 public class Main {
                public static void main (String[] args){
                      double intvar = 2;
-                     int doubleVar = (double) intvar;   
+                     int doubleVar = (int) intvar;   
                               System.out.println(intvar);
                               System.out.println(doubleVar);
                }
