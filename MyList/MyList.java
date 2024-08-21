@@ -1,6 +1,8 @@
+import java.util.HashSet;
  
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Set;
 
 public class MyList {
                // Exo1
@@ -36,13 +38,26 @@ public class MyList {
 
 // Exo4
 
+// public static void main(String[] args) {
+//                int [] number = {5, 2, 9, 1, 5, 6};
+//                                         Arrays.sort(number);
+//                                         Scanner scanner= new Scanner(System.in);
+//                                         System.out.println("Entrez la valeur dont vous rechercher l'index");
+//                                         int target = scanner.nextInt();
+//                                         int index = Arrays.binarySearch(number,target);
+//                                         String resultat =(index<0)? "Le nombre n'existe pas" : "Le nombre" + target + "est a la position" + index; 
+//                                         System.out.println(resultat);
+//                                         scanner.close();
+//                               }
+
+//Exo5
+
 public static void main(String[] args) {
-               int [] number = {5, 2, 9, 1, 5, 6};
-                                        Arrays.sort(number);
-                                        Scanner scanner= new Scanner(System.in);
-                                        System.out.println("Entrez la valeur dont vous rechercher l'index");
-                                        int index = scanner.nextInt();
-                                        System.out.println("Le nombre"+ index + " entrer se trouve a l'index" + Arrays.binarySearch(number,index));
-                              scanner.close();
+               int [] doublons = {5, 2,2,9, 9, 1, 5, 6};
+               Set<Integer> uniqueVal = new  HashSet<>();
+                                  for (int item : doublons) {
+                                      uniqueVal.add(item);
+                                  } 
+                                  System.out.println("Le tableau des valeurs non double est" + uniqueVal);
                               }
 }
