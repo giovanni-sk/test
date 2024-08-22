@@ -1,32 +1,46 @@
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-               public static void main(String[] args) {
-                              Employe employe = new Employe();
-                              System.out.println(employe);
-                              ArrayList<Employe> donnee= new ArrayList<Employe>();
-                              Scanner scanner = new Scanner(System.in);
-                              // System.out.println("Entrer l'identifiant");
-                              // int IdIn = scanner.nextInt();
-                              System.out.println("Entrer le nom de l'employé");
-                              String nomIn = scanner.nextLine();
-                              System.out.println("Entrer le poste de l'employé");
-                              String posteIn = scanner.nextLine();
-                              System.out.println("Entrer le Salaire de l'employé");
-                              int salaireIn = scanner.nextInt();
+   static ArrayList<Employe> donnee = new ArrayList<Employe>();
+   static Scanner scanner = new Scanner(System.in);
 
-                              // employe.setId(IdIn);
-                              employe.setNom(nomIn);
-                              employe.setPoste(posteIn);
-                              employe.setSalaire(salaireIn);
-                              donnee.add(employe);
-                            
-                              System.out.println(donnee);
-                              employe.getEmploye(donnee);
-                              scanner.close();
+   public static void main(String[] args) {
+      Employe employe = new Employe();
+    
+         System.out.println("MENU:");
+         System.out.println("1-Enregistrer un employé:");
+         System.out.println("2-Supprimer un employé:");
+         System.out.println("3-Modifier un employé:");
+         System.out.println("4-Afficher tous les employés:");
+         System.out.println("5-Quitter:");
+         System.out.println("Choisissez une option :");
+         int choix = scanner.nextInt();
 
-               }
+         switch (choix) {
+            case 1:
+               employe.addEmploye();
+               break;
+            case 2:
+               employe.deleteEmploye();
+               break;
+            case 3:
+               employe.updateEmploye();
+               break;
+            case 4:
+               employe.getEmploye(donnee);
+               break;
+            case 5:
+               System.out.println("Sortie du programme...");
+               System.exit(0);
+            default:
+               System.out.println("Choix invalide.");
+
+         }
+      }
+
+   
+   
+
 }
