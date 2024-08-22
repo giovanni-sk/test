@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Employe {
-              int id;
+              long id;
               String nom;
               String poste;
               double salaire;
@@ -10,7 +10,7 @@ public class Employe {
               static Scanner scanner = new Scanner(System.in);
 
                // getters
-               public int getId() {
+               public long getId() {
                               return id;
                }
 
@@ -27,7 +27,7 @@ public class Employe {
                }
 
                // setters
-               public void setId(int newId) {
+               public void setId(long newId) {
                               this.id = newId;
                }
 
@@ -42,7 +42,8 @@ public class Employe {
                public void setSalaire(double salaire) {
                               this.salaire = salaire;
                }
-   
+  
+
 
               public static void getEmploye(ArrayList<Employe> donnee) {
                               for (Employe employe : donnee) {
@@ -60,8 +61,9 @@ public class Employe {
                             System.out.println("Combien d'utilisateur voulez vous enregistrer ?");
                             int n = scanner.nextInt();
                             for (int i = 0; i <n; i++) {
-                                           System.out.println("Entrez l'identifiant");
-                                           int IdIn = scanner.nextInt();
+                                        long newId = System.currentTimeMillis();
+                                             System.out.println(newId);
+                                            
                                            scanner.nextLine();
                                            System.out.println("Entrez le nom de l'employé");
                                            String nomIn = scanner.nextLine();
@@ -71,7 +73,7 @@ public class Employe {
                                            double salaireIn = scanner.nextDouble();
                               //Recuperation des données
                               Employe employe = new Employe();
-                              employe.setId(IdIn);
+                              employe.setId(newId);
                               employe.setNom(nomIn);
                               employe.setPoste(posteIn);
                               employe.setSalaire(salaireIn);
@@ -119,11 +121,14 @@ public class Employe {
                             
 
              public  static void deleteEmploye(){
-               System.out.println("Quel Utilisateur voulez vous supprimer?(L'iD)");
-               
-               int Id = scanner.nextInt();
-                              donnee.removeIf(el->el.id==Id);
+               System.out.println("Quel Utilisateur voulez vous supprimer?(L'id)");
+
+               long Id = scanner.nextLong();
+                              donnee.removeIf(el->el.id ==Id);
+                              menu();
              }
+
+
               public  static void updateEmploye(){}
               
 
