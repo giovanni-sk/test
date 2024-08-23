@@ -15,7 +15,7 @@ public class EmployeeManager implements EmployeeOperations {
                // Menu
 
                public static void Menu() {
-                              System.out.println("**********MENU*********");
+                              System.out.println("\n**********MENU*********");
                               System.out.println("Que voulez-vous faire ?");
                               System.out.println("1-Enregistrer un employé:");
                               System.out.println("2-Supprimer un employé:");
@@ -31,15 +31,17 @@ public class EmployeeManager implements EmployeeOperations {
                                                             Employee.addEmployee();
                                                             break;
                                              case 2:
-                                                            System.out.println("Entrez l'id de l'utilisateur à supprimer");
+                                                            System.out.println("Entrez l'id de l'employé à supprimer");
                                                             identifiant = scanner.nextLong();
                                                             Employee.deleteEmployee(employes,identifiant);
                                                             break;
                                              case 3:
-                                                            // Employee.updateEmploye();
+                                                            System.out.println("Entrez l'id de l'employé que vous souhaiter modifier");
+                                                            identifiant = scanner.nextLong();
+                                                            Employee.updateEmployee(employes,identifiant);
                                                             break;
                                              case 4:
-                                             System.out.println("Entrez l'id de l'utilisateur que vous rechercher");
+                                             System.out.println("Entrez l'id de l'employé que vous rechercher");
                                              identifiant = scanner.nextLong();
                                                             Employee.getEmployee(employes,identifiant);
                                                             break;
@@ -63,7 +65,7 @@ public class EmployeeManager implements EmployeeOperations {
                               System.out.println("2:Manager");
                               int choix = scanner.nextInt();
 
-                              
+
                               if (choix == 1) {
                                              System.out.println("*****************Enregistrement d'un Développeur***********************");
                                              System.out.println("Specialité :");
@@ -95,6 +97,34 @@ public class EmployeeManager implements EmployeeOperations {
 
                }
 
+              
+              public void updateEmployee(ArrayList<Employee> employes , long identifiant){
+               for (Employee emp : employes) {
+                              if (emp.getId()==identifiant) {
+                                             // Recuperation de la class de l'utilisateur dont la modification veux etre faite 
+                                             System.out.println(emp.getClass());
+                                             //Insertion du nouveau nom et du nouveau salaire
+                                             System.out.println("Entrez le nouveau nom de l'employé");
+                                             scanner.nextLine();
+                                             emp.setNom(scanner.nextLine());
+                                             System.out.println("Entrez le nouveau salaire");
+                                             emp.setSalaire(scanner.nextDouble());
+                                             if (emp.getClass() == manager.getClass()) {
+                                                            manager.setId(emp.getId());
+                                                            manager.setNom(emp.getNom());
+                                                            manager.setSalaire(emp.getSalaire());
+                                                            System.out.println("Veuillez entrer le nouveau nombre de personnes à la charge");
+                                                            manager.setNbrePersonnes(scanner.nextInt());
+                                                            //Mise a jour du tableau 
+
+                                                            employes.set(employes.indexOf(Employee), manager);
+                                                      
+                                                            System.out.println("Mise à jour effectuer avec succès");
+                                                            manager.getDetail();
+                                             }
+                              }
+               }
+              }
                // Methode de suppression d'employé
 
                public void deleteEmployee(ArrayList<Employee> employes, long identifiant) {
@@ -111,11 +141,11 @@ public class EmployeeManager implements EmployeeOperations {
                // Methode d'affichage de tous les employés
 
                public void getAllEmployee(ArrayList<Employee> employes) {
+                         
                               for (Employee emp : employes) {
                                              // Affichage des details
                                              emp.getDetail();
                               }
-                       
                               Menu();
                }
 
@@ -125,7 +155,6 @@ public class EmployeeManager implements EmployeeOperations {
                                                          emp.getDetail();
                                              }
                               }
-                              
                               Menu();
                }
 
