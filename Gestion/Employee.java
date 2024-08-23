@@ -1,15 +1,16 @@
 package Gestion;
 
+abstract class Employee {
+               protected long id;
+               protected String nom;
+               protected String poste;
+               protected double salaire;
+            
 
- abstract class Employee {
-               protected long id ;
-               protected String nom ;
-               protected String poste ;
-               protected double salaire ;
-               
+           
 
-                // getters
-                public long getId() {
+               // getters
+               public long getId() {
                               return id;
                }
 
@@ -41,8 +42,10 @@ package Gestion;
                public void setSalaire(double salaire) {
                               this.salaire = salaire;
                }
-  
 
+   //Methode abstraite à implementer dans les classes dérivé chaque type d'employe définira sa specificité
 
-               public abstract void detail();
+               public  void getDetail(){
+                              System.out.println("details");
+               }
 }
